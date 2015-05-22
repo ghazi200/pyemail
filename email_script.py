@@ -1,24 +1,24 @@
 import requests
 import json
-import email
+from email.mime.text import MIMEText
+from subprocess import Popen, PIPE
 
 def get_json(url):
 	req = requests.get(ur)
 	data= json.loads(req.text)
 	return data
 
-	#bitstamp_api ="http://www.bitstamp.net/api/ticker/"
-	#print data
+def send_email():
+	sender = "techworldstarzllc@gmail.com"
+	msg = MIMEText("Here is the body of the message")
+	msg["From"] = sender
+	msg["To"] = "edgar.factorial@gmail.com"
+	msg["Subject"] = "A test case"
+	p = Popen(["/usr/sbin/sendmail", "-t", "-oi"], stdin=PIPE)
+	p.communicate(msg.as_bytes())
+	print("Running")
 
-import smtplib
-from email.mime.text import MIMEText
-fb = open( textfile , 'rb')
-msg = MIMEText(fp.read())
-fp.close()
-msg ['subject'] = 'the contents of %s' % textfile
-msg ['from'] = "http://www.bitstamp.net/apli/ticker/"
-msg ['to'] = techworldstarzllc@gmail.com
-s= smtplib.SMTP('localhost')
-s.sendmail(me , [you], msg.as_string())
-s.quite
-	
+
+if __name__ == "__main__":
+	#print("Hello")
+	send_email()
